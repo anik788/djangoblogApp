@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{#{% load crispy_forms_filters %}#}
+{% load crispy_forms_tags %}
+{% block title %} Post Create{% endblock %}
+{% block content %}
+{#    {% if error %}#}
+{#        <b> Some This went Wrong {{ error }}</b>#}
+{#    {% endif %}#}
+<form method="post">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form|crispy }}
+  <input type="submit" value="Submit">
+</form>
+{% endblock %}

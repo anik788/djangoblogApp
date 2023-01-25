@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+{% block title %} {{ user.username }}'s Profile {% endblock %}
+{% block content %}
+    {{ profile.phone }} <br>
+    {{ profile.address }} <br>
+    {% for post in posts %}
+            <div class="card">
+      <h5 class="card-header">{{ post.title }}</h5>
+      <div class="card-body">
+        <h5 class="card-title">Status: {{ post.status.capitalize }} | {{ post.created_at }}</h5>
+        <p class="card-text">{{ post.body|safe|truncatechars:100 }}</p> <br>
+        <a href="{% url 'blog:post_detail' post.id %}" class="btn btn-primary">Show More</a>
+      </div>
+    </div>
+    {% endfor %}
+{% endblock %}
